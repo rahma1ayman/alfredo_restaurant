@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'book_table/time_screen.dart';
+import 'home_screen.dart';
 import 'models/splash_screen.dart';
 
 void main() {

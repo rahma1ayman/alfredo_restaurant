@@ -23,31 +23,46 @@ class _SignUpState extends State<SignUp> {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.only(bottom: 16),
-              alignment: Alignment.bottomLeft,
-              width: double.infinity,
-              height: 320,
-              decoration: const BoxDecoration(
-                color: Color(0xffBBD4CE),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
               ),
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: '    Sign Up',
+              height: 320,
+              child: Stack(
+                children: <Widget>[
+                  SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Image.asset(
+                      'images/table pic1.jpeg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(5.0),
+                    alignment: Alignment.bottomLeft,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: <Color>[
+                          Colors.black.withAlpha(0),
+                          Colors.black12,
+                          Colors.black45
+                        ],
+                      ),
+                    ),
+                    child: Text(
+                      'Sign Up',
                       style: GoogleFonts.labrada(
-                        color: Colors.black,
-                        fontSize: 28,
+                        color: Colors.white54,
+                        fontSize: 35,
                         letterSpacing: 1,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(
@@ -156,13 +171,16 @@ class _SignUpState extends State<SignUp> {
                                 behavior: SnackBarBehavior.floating,
                               ),
                             );
-                            setState(() {
-                              Navigator.pushReplacement(
+                            setState(
+                              () {
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Login(),
-                                  ));
-                            });
+                                    builder: (context) => const Login(),
+                                  ),
+                                );
+                              },
+                            );
                           }
                         },
                         style: ButtonStyle(

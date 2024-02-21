@@ -1,3 +1,4 @@
+import 'package:alfredo_restaurant/home_screen.dart';
 import 'package:alfredo_restaurant/rigistration/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const SignUp(),
+          builder: (context) => const StartedScreen(),
         ),
       );
     });
