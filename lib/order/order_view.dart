@@ -1,8 +1,7 @@
-import 'package:alfredo_restaurant/models/splash_screen2.dart';
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
+import '../book_table/time_screen.dart';
 import '../dish_discription/dish_disc.dart';
-import '../menu/menu_screen.dart';
 import '../models/model.dart';
 
 class OrderView extends StatefulWidget {
@@ -146,56 +145,43 @@ class _DialogShowState extends State<DialogShow> {
         color: Colors.green,
         size: 70,
       ),
-      content: const SizedBox(
-        height: 80,
-        child: Column(
-          children: [
-            Text(
-              'Ordered Successfully',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              'please don\'t forget to book your table for confirming your booking.',
-              style: TextStyle(
-                color: Colors.red,
-              ),
-            )
-          ],
+      content: Text(
+        'Ordered Successfully',
+        style: GoogleFonts.labrada(
+          color: Colors.black,
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
         ),
       ),
       actions: [
-        ElevatedButton(
-          onPressed: () {
-            cart.clear();
-            totalPrice = 0;
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const SplashScreen2(),
-              ),
-            );
-          },
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(
-                const Color(0xffBBD4CE)), // Set your desired background color
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(10.0), // Adjust the radius as needed
+        Center(
+          child: ElevatedButton(
+            onPressed: () {
+              cart.clear();
+              totalPrice = 0;
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const TimeBooking(),
+                ),
+              );
+            },
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  const Color(0xffBBD4CE)), // Set your desired background color
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                      10.0), // Adjust the radius as needed
+                ),
               ),
             ),
-          ),
-          child: const Text(
-            'Okay',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
+            child: const Text(
+              'Book Table',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
             ),
           ),
         ),

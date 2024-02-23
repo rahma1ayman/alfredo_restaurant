@@ -1,3 +1,4 @@
+import 'package:alfredo_restaurant/rigistration/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/model.dart';
@@ -11,6 +12,20 @@ class MenuData extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xffBBD4CE),
         elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Login(),
+                ));
+          },
+          icon: const Icon(
+            Icons.logout_sharp,
+            size: 25,
+            color: Colors.black,
+          ),
+        ),
         title: Text(
           'Menu',
           style: GoogleFonts.labrada(
@@ -29,8 +44,8 @@ class MenuData extends StatelessWidget {
           scrollDirection: Axis.vertical,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 15,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
           ),
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
@@ -41,19 +56,37 @@ class MenuData extends StatelessWidget {
                 ),
               );
             },
-            child: Container(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Image(
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  dishDisc[index]['dishImage'],
+            child: Column(
+              children: [
+                Container(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  width: 175,
+                  height: 145,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Image(
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      dishDisc[index]['dishImage'],
+                    ),
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8, left: 14, right: 14),
+                  child: Text(
+                    dishDisc[index]['dishName'],
+                    style: GoogleFonts.labrada(
+                      color: Colors.black,
+                      fontSize: 14,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
           itemCount: dishDisc.length,

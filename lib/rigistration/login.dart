@@ -1,4 +1,5 @@
 import 'package:alfredo_restaurant/models/splash_screen2.dart';
+import 'package:alfredo_restaurant/rigistration/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -193,6 +194,42 @@ class _LoginScaffoldState extends State<Login> {
                             color: Colors.black,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 200,
+                    ),
+                    SizedBox(
+                      width: 390,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignUp(),
+                              ));
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color(
+                                  0xffBBD4CE)), // Set your desired background color
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ), // Adjust the radius as needed
+                            ),
+                          ),
+                        ),
+                        child: const Text(
+                          'Create new account',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
                           ),
                         ),
                       ),

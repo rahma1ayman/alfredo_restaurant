@@ -2,6 +2,8 @@ import 'package:alfredo_restaurant/order/order_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../models/model.dart';
+
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
   @override
@@ -62,11 +64,14 @@ class _OrderScreenState extends State<OrderScreen> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    showDialog(
-                      barrierDismissible: false,
-                      context: context,
-                      builder: (context) => const DialogShow(),
-                    );
+                    if (cart.isEmpty) {
+                    } else {
+                      showDialog(
+                        barrierDismissible: false,
+                        context: context,
+                        builder: (context) => const DialogShow(),
+                      );
+                    }
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(

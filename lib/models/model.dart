@@ -1,4 +1,3 @@
-import 'package:alfredo_restaurant/book_table/time_screen.dart';
 import 'package:flutter/cupertino.dart';
 import '../order/order_screen.dart';
 import '../menu/menu_data.dart';
@@ -120,6 +119,5 @@ final List dishDisc = [
 List<Widget> screens = [
   const MenuData(),
   const OrderScreen(),
-  const TimeBooking(),
 ];
 final List cart = [];

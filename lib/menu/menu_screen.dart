@@ -24,10 +24,6 @@ class _MenuScreenState extends State<MenuScreen> {
             icon: Icon(Icons.shopping_bag),
             label: 'Order',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.event_available),
-            label: 'Book table',
-          ),
         ],
         selectedItemColor: const Color(0xffBBD4CE),
         unselectedItemColor: Colors.black,

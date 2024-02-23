@@ -1,5 +1,4 @@
 import 'package:alfredo_restaurant/book_table/time_screen.dart';
-import 'package:alfredo_restaurant/menu/menu_screen.dart';
 import 'package:alfredo_restaurant/models/splash_screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 var mesg = 'test';
 var mesg2 = 'test2';
 var iconin = Icons.task_alt;
-var iconcolor = 0xFFFFA500;
+var iconColor = 0xFFFFA500;
 var adultColor = 0xFF000000;
 var timeColor = 0xFF000000;
 
@@ -18,6 +17,7 @@ class PeopleBooking extends StatefulWidget {
 }
 
 class _PeopleBookingState extends State<PeopleBooking> {
+  bool f = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -244,26 +244,29 @@ class _PeopleBookingState extends State<PeopleBooking> {
                 ),
               ),
               onPressed: () {
+                f = false;
                 if (timeBook <= 0) {
                   mesg = 'Error';
                   mesg2 = 'You did not choose the booking time';
                   iconin = Icons.priority_high;
-                  iconcolor = 0xFFFF0000;
+                  iconColor = 0xFFFF0000;
                   timeColor = 0xFFFF0000;
                   adultColor = 0xFF000000;
+                  f = true;
                 } else {
                   if (adultNum <= 0) {
                     mesg = 'Error';
                     mesg2 = 'A table must at least have one adult';
                     iconin = Icons.priority_high;
-                    iconcolor = 0xFFFF0000;
+                    iconColor = 0xFFFF0000;
                     adultColor = 0xFFFF0000;
                     timeColor = 0xFF000000;
+                    f = true;
                   } else {
                     mesg = 'Booking confirmed';
                     mesg2 = 'See you soon';
                     iconin = Icons.task_alt;
-                    iconcolor = 0xFFFFA500;
+                    iconColor = 0xFFFFA500;
                     adultColor = 0xFF000000;
                     timeColor = 0xFF000000;
                   }
@@ -283,14 +286,17 @@ class _PeopleBookingState extends State<PeopleBooking> {
                             height: 80,
                             child: Icon(
                               iconin,
-                              color: Color(iconcolor),
+                              color: Color(iconColor),
                               size: 80,
                             ),
                           ),
                           Text(
                             mesg,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
+                            style: GoogleFonts.labrada(
+                              color: Colors.black,
+                              fontSize: 25,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ],
                       ),
@@ -300,8 +306,10 @@ class _PeopleBookingState extends State<PeopleBooking> {
                           children: [
                             Text(
                               mesg2,
-                              style: const TextStyle(
-                                fontSize: 20,
+                              style: GoogleFonts.labrada(
+                                color: Colors.black,
+                                fontSize: 25,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                             const SizedBox(
@@ -376,9 +384,12 @@ class _PeopleBookingState extends State<PeopleBooking> {
                             width: 200,
                             child: ElevatedButton(
                               style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty
-                                    .all<Color>(const Color(
-                                        0xffBBD4CE)), // Set your desired background color
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  (f == true
+                                      ? const Color(0xffC75450)
+                                      : const Color(0xffBBD4CE)),
+                                ), // Set your desired background color
                                 shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
@@ -388,20 +399,23 @@ class _PeopleBookingState extends State<PeopleBooking> {
                                 ),
                               ),
                               onPressed: () {
+                                if (f == true) {
+                                  Navigator.pop(context);
+                                }
                                 // Close the dialog when this button is pressed
-                                adultNum = 0;
-                                childNum = 0;
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SplashScreen2(),
-                                    ));
+                                else {
+                                  adultNum = 0;
+                                  childNum = 0;
+                                  timeBook = 0;
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SplashScreen2(),
+                                      ));
+                                }
                               },
-                              child: const Text(
-                                'Close',
-                                style: TextStyle(color: Colors.black),
-                              ),
+                              child: Text(f == true ? 'Cancel' : 'Close'),
                             ),
                           ),
                         ),
