@@ -16,6 +16,7 @@ class _LoginScaffoldState extends State<Login> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool _isObscure = true;
+  bool check = false;
 
   @override
   Widget build(BuildContext context) {
@@ -135,23 +136,33 @@ class _LoginScaffoldState extends State<Login> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            if (_emailController.text ==
-                                    'rahma1ayman@gmail.com' &&
-                                _passwordController.text == '1234') {
-                              setState(() {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const SplashScreen2(),
-                                  ),
-                                );
-                              });
-                            } else {
+                            for (int i = 0; i < usersMail.length; i++) {
+                              if (_emailController.text == usersMail[i]) {
+                                if (_passwordController.text == usersPass[i]) {
+                                  check = true;
+                                  setState(() {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SplashScreen2(),
+                                      ),
+                                    );
+                                  });
+                                  break;
+                                }
+                              }
+                            }
+                            if (check == false) {
                               showDialog(
+                                barrierDismissible: false,
                                 context: context,
                                 builder: (context) => AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
                                   title: const Icon(
-                                    Icons.warning,
+                                    Icons.priority_high,
                                     color: Colors.red,
                                     size: 45,
                                   ),

@@ -2,6 +2,14 @@ import 'package:alfredo_restaurant/rigistration/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+List<dynamic> usersMail = [
+  'abdotha5@gmail.com',
+];
+
+List<dynamic> usersPass = [
+  '1234',
+];
+
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
   @override
@@ -144,12 +152,16 @@ class _SignUpState extends State<SignUp> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            // You can add your sign-up logic here
-                            Map<String, String> userData = {
-                              'username': _usernameController.text,
-                              'email': _emailController.text,
-                              'password': _passwordController.text,
-                            };
+                            setState(() {
+                              usersMail.add(_emailController.text);
+                              usersPass.add(_passwordController.text);
+                              // You can add your sign-up logic here
+                              Map<String, String> userData = {
+                                'username': _usernameController.text,
+                                'email': _emailController.text,
+                                'password': _passwordController.text,
+                              };
+                            });
                             // print(userData);
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

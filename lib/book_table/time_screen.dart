@@ -402,7 +402,10 @@ class _TimeBookingState extends State<TimeBooking> {
                   );
                 });
               },
-              child: const Text("Next"),
+              child: const Text(
+                "Next",
+                style: TextStyle(color: Colors.black),
+              ),
             ),
           )
         ],

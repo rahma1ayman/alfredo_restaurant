@@ -415,7 +415,10 @@ class _PeopleBookingState extends State<PeopleBooking> {
                                       ));
                                 }
                               },
-                              child: Text(f == true ? 'Cancel' : 'Close'),
+                              child: Text(
+                                f == true ? 'Cancel' : 'Close',
+                                style: const TextStyle(color: Colors.black),
+                              ),
                             ),
                           ),
                         ),
@@ -424,7 +427,10 @@ class _PeopleBookingState extends State<PeopleBooking> {
                   },
                 );
               },
-              child: const Text("Confirm"),
+              child: const Text(
+                "Confirm",
+                style: TextStyle(color: Colors.black),
+              ),
             ),
           )
         ],

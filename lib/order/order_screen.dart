@@ -1,3 +1,4 @@
+import 'package:alfredo_restaurant/dish_discription/dish_disc.dart';
 import 'package:alfredo_restaurant/order/order_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -65,6 +66,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (cart.isEmpty) {
+                      totalPrice = 0;
                     } else {
                       showDialog(
                         barrierDismissible: false,

@@ -100,7 +100,7 @@ class _DishDescriptionState extends State<DishDescription> {
           child: Text(
             widget.description,
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 18,
               color: Colors.grey[600],
             ),
           ),
@@ -152,7 +152,7 @@ class _DishDescriptionState extends State<DishDescription> {
           ],
         ),
         const SizedBox(
-          height: 80,
+          height: 55,
         ),
         Text(
           '${widget.price} EGP',
@@ -163,7 +163,7 @@ class _DishDescriptionState extends State<DishDescription> {
           ),
         ),
         const SizedBox(
-          height: 15,
+          height: 3,
         ),
         SizedBox(
           width: 300,

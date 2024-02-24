@@ -58,34 +58,49 @@ class MenuData extends StatelessWidget {
             },
             child: Column(
               children: [
-                Container(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  width: 175,
-                  height: 145,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Image(
-                    width: double.infinity,
-                    height: double.infinity,
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      dishDisc[index]['dishImage'],
+                Stack(
+                  children: [
+                    Container(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      width: 195,
+                      height: 195,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Image.asset(
+                        dishDisc[index]['dishImage'],
+                        fit: BoxFit.fill,
+                      ),
                     ),
-                  ),
+                    Container(
+                      width: 195,
+                      height: 195,
+                      padding: const EdgeInsets.all(5.0),
+                      alignment: Alignment.bottomCenter,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: <Color>[
+                            Colors.black.withAlpha(0),
+                            Colors.black12,
+                            Colors.black45
+                          ],
+                        ),
+                      ),
+                      child: Text(
+                        dishDisc[index]['dishName'],
+                        style: GoogleFonts.labrada(
+                          color: Colors.white,
+                          fontSize: 20,
+                          letterSpacing: 1,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 14, right: 14),
-                  child: Text(
-                    dishDisc[index]['dishName'],
-                    style: GoogleFonts.labrada(
-                      color: Colors.black,
-                      fontSize: 14,
-                      letterSpacing: 1,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                )
               ],
             ),
           ),
